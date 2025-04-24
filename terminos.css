@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+img{
+    max-width: 100%;
+}
+
+.container{
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.header {
+    background-color: #FAFAFA;
+    padding: 150px 0 100px 0;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+
+.menu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu .navbar ul li{
+    position: relative;
+    float: left;
+}
+
+.menu .navbar ul li a {
+    font-size: 18px;
+    padding: 20px;
+    color: #323232;
+    display: block;
+}
+
+.menu .navbar ul li a:hover{
+    color: #02B1F4;
+}
+
+.logo{
+    font-size: 25px;
+    font-weight: 800;
+    color:#02B1F4;
+    text-transform: uppercase;
+}
+
+#menu{
+    display: none;
+}
+
+.menu-icono{
+    width: 25px;
+}
+
+.menu label{
+    cursor: pointer;
+    display: none;
+}
+ 
+/* Estilos para la sección "Términos y Condiciones" */
+.terminos-container {
+    text-align: center;
+    padding: 50px 0;
+    color:#02B1F4;
+    background-color: #FAFAFA;
+}
+
+.terminos-container h2 {
+    font-size: 26px;
+    color: #02B1F4;
+    text-align: left;
+    margin-bottom: 0px;
+}
+
+.terminos-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 25px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    flex-basis: calc(35% - 20px);
+}
+
+/* Estilos para cada recuadro de términos y condiciones */
+.terminos-recuadro {
+    width: 100%;
+    margin: 20px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+p {
+    text-align: justify;
+    color: black;
+}
+/* Estilos para el ícono del recuadro de términos y condiciones */
+.terminos-icono {
+    font-size: 36px;
+    text-align: center;
+    color: #02B1F4;
+    margin-bottom: 45px;
+}
+
+/* Estilos en hover para el recuadro de términos y condiciones */
+.terminos-recuadro:hover {
+    transform: scale(1.05);
+}
+
+/* Estilos para el título del recuadro de términos y condiciones */
+.terminos-recuadro h3 {
+    font-size: 24px;
+    color: #323232;
+    margin-bottom: 10px;
+}
+
+/* Estilos para el contenido del recuadro de términos y condiciones */
+.terminos-recuadro p {
+    font-size: 16px;
+    color: #818181;
+}

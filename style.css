@@ -1,0 +1,540 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+img{
+    max-width: 100%;
+}
+
+.container{
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.header {
+    background-color: #FAFAFA;
+    padding: 150px 0 100px 0;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+
+.menu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu .navbar ul li{
+    position: relative;
+    float: left;
+}
+
+.menu .navbar ul li a {
+    font-size: 18px;
+    padding: 20px;
+    color: #323232;
+    display: block;
+}
+
+.menu .navbar ul li a:hover{
+    color: #02B1F4;
+}
+
+.logo{
+    font-size: 25px;
+    font-weight: 800;
+    color:#02B1F4;
+    text-transform: uppercase;
+}
+
+#menu{
+    display: none;
+}
+
+.menu-icono{
+    width: 25px;
+}
+
+.menu label{
+    cursor: pointer;
+    display: none;
+}
+
+.header-content {
+    display: flex;
+}
+
+.header-txt {
+    width: 50%;
+}
+
+.header-txt h1 {
+    line-height: 1;
+    color: #323232;
+    text-transform: uppercase;
+    font-size: 75px;
+    margin-bottom: 10px;
+}
+
+.header-txt p {
+    font-size: 16px;
+    color: #818181;
+    margin-bottom: 45px;
+}
+
+.header-img{
+    width: 50%;
+}
+
+.btn-1 {
+    display: inline-block;
+    padding: 11px 25px;
+    background-color: #02B1F4;
+    color: #FFFFFF;
+    border-radius: 15px;
+}
+
+.about {
+    padding: 100px 0;
+    display: flex;
+}
+
+.about-img {
+    width: 50%;
+}
+
+.about-img img {
+    width: 500px;
+    border-radius: 15px;
+}
+
+.about-txt { 
+    width: 50%;
+    margin-left: 25px;
+}
+
+.about-txt h2 {
+    color: #323232;
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.about-txt p {
+    font-size: 16px;
+    color: #818181;
+}
+
+/* Estilos para la sección "centro-medico" */
+.centro-medico {
+    text-align: center;
+    padding: 50px 0 100px 0;
+    background-color: #FAFAFA;
+    padding: 25px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    flex-basis: calc(25% - 20px);
+}
+
+/* Estilos para el título */
+.centro-medico h2 {
+    color: #02B1F4;
+    margin-bottom: 35px;
+    font-size: 70px;
+}
+
+/* Estilos para el contenedor de servicios */
+.centro-medico-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 25px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    flex-basis: calc(35% - 20px);
+}
+
+/* Estilos para cada servicio */
+.servicio {
+
+    width: 200px; /* Ancho de cada recuadro */
+    margin: 20px; /* Espaciado entre los recuadros */
+    transition: transform 0.2s ease-in-out; /* Transición suave para el zoom */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse sobre el elemento */
+    
+}
+
+.servicio:hover {
+    transform: scale(1.1); /* Aplicar un zoom del 110% en hover */
+}
+
+.servicio-icono {
+    font-size: 36px; /* Tamaño de icono */
+    text-align: center;
+}
+
+/* Estilos para la sección "centro-medico" */
+.centro-medico {
+    text-align: center;
+}
+
+/* Estilos para el título */
+.centro-medico h2 {
+    font-size: 36px;
+}
+
+/* Estilos para el contenedor de servicios */
+.centro-medico-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+/* Estilos para el recuadro del servicio */
+.servicio, .horario {
+    width: 300px; /* Ancho de cada recuadro */
+    margin: 20px; /* Espaciado entre los recuadros */
+    transition: transform 0.3s ease-in-out; /* Transición suave para el zoom */
+    cursor: pointer;
+}
+
+/* Estilos para el ícono del servicio */
+.servicio-icono, .horario-icono {
+    font-size: 36px; /* Tamaño de icono */
+    text-align: center;
+}
+.servicio:hover, .horario:hover {
+    transform: scale(1.2);
+}
+
+.telefono-icono {
+    position: fixed;
+    top: 20px; /* Ajusta la posición vertical en la parte superior según tus preferencias */
+    right: 20px; /* Ajusta la posición horizontal en la parte derecha según tus preferencias */
+    z-index: 1000; /* Asegura que el ícono de teléfono esté por encima de otros elementos */
+    cursor: pointer;
+}
+
+.ubicacion-icono {
+    position: fixed;
+    bottom: 20px; /* Ajusta la posición vertical en la parte inferior según tus preferencias */
+    right: 20px; /* Ajusta la posición horizontal en la parte derecha según tus preferencias */
+    z-index: 1000; /* Asegura que el ícono de ubicación esté por encima de otros elementos */
+    cursor: pointer;
+}
+
+.telefono-icono a,
+.ubicacion-icono a {
+    font-size: 20px; /* Ajusta el tamaño de los íconos según tus preferencias */
+}
+
+/* Estilos de los formularios */
+.informacion-pacientes {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+    color: #02B1F4;
+    text-align: center;
+}
+
+/* Estilos para el título "Servicios para Pacientes" */
+.informacion-pacientes h2 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Estilos para los recuadros de servicios */
+.informacion-recuadro {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Estilos para los íconos de servicios (personaliza el tamaño y color según tus necesidades) */
+.informacion-icono {
+    font-size: 36px;
+    color: #02B1F4;
+    margin-bottom: 10px;
+}
+
+/* Estilos para los títulos de servicios */
+.informacion-recuadro h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Estilos para el texto de servicios */
+.informacion-recuadro p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Estilos para hover (opcional) */
+.informacion-recuadro:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos CSS para centrar y hacer más pequeño el formulario de "Agenda Consulta" */
+.formulario-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* Ajusta la altura mínima para centrar */
+    text-align: center;
+}
+
+.formulario {
+    width: 80%; /* Reducir el ancho del formulario */
+    max-width: 400px; /* Establecer un ancho máximo para mantenerlo legible */
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Estilos para el título del formulario */
+.formulario h2 {
+    font-size: 25px;
+    color: #323232;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+
+#citaFormContainer {
+    order: 1;
+}
+
+#pacienteFormContainer {
+    order: 2;
+}
+
+form h2 {
+    font-size: 25px;
+    color: #323232;
+    text-transform: uppercase;
+    margin-bottom: 35px;
+}
+
+.input-container {
+    position: relative;
+}
+
+.input-container > i {
+    padding: 14px;
+    border-radius: 50%;
+    background-color: #02B1F4;
+    color: #FFFFFF;
+    position: absolute;
+    font-size: 20px;
+    top: 4px;
+    left: 10px;
+}
+
+.input-container > input, textarea {
+    padding: 17px 15px 17px 65px;
+    width: 100%;
+    margin-bottom: 25px;
+    border-radius: 35px;
+    background-color: transparent;
+    border: 2px solid #02B1F4;
+    font-size: 16px;
+    outline: none;
+    color: #323232;
+}
+
+textarea {
+    font-family: "Poppins", sans-serif;
+    height: 150px;
+}
+
+::placeholder {
+    color: #a0a0a0;
+    font-size: 16px;
+}
+
+.btn {
+    background-color: #02B1F4;
+    padding: 17px 30px;
+    width: 100%;
+    border: 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    color: #FFFFFF;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+
+@media (max-width: 991px) {
+    .informacion {
+        flex-direction: column;
+    }
+
+    .informacion-recuadro {
+        width: 100%;
+    }
+}
+
+
+.footer {
+    padding: 50px;
+    background-color: #FAFAFA;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+} 
+
+.link ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.link ul li {
+    margin-right: 50px;
+}
+
+.link ul li a {
+
+    color: #323232;
+    font-size: 17px;
+}
+
+.link ul li a:hover {
+    color: #02B1F4;
+}
+
+
+@media (max-width:991px) {
+
+    .menu {
+        padding: 20px;
+    }
+
+    .menu label {
+        display: initial;
+    }
+
+    .menu .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #FFFFFF;
+        display: none;
+    }
+
+    .menu .navbar ul li {
+        width: 100%;
+    }
+
+    #menu:checked ~ .navbar {
+        display: initial;
+    }
+
+    .header {
+        min-height: 0vh;
+        padding: 80px 30px 50px 30px;
+    }
+
+    .header-content {
+        flex-direction: column;
+    }
+
+    .header-txt {
+        text-align: center;
+        width: 100%;
+        margin-bottom: 25px;
+    }
+
+    .header-img {
+        width: 100%;
+    }
+
+    .header-img img {
+        width: 100%;
+    }
+
+    .about {
+        padding: 30px;
+        flex-direction: column;
+    }
+
+    .about-img {
+        width: 100%;
+        order: 2;
+    }
+
+    .about-img img {
+        width: 100%;
+    }
+
+    .about-txt {
+        width: 100%;
+        margin-left: 0;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .servicios {
+        padding: 30px;
+    }
+
+    .servicios-content {
+        margin-top: 25px;
+        flex-direction: column;
+    }
+
+    .servicios-1 {
+        margin-bottom: 20px;
+    }
+
+    .formulario {
+        padding: 30px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    .footer {
+        padding: 30px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .link ul {
+        flex-direction: column;
+    }
+
+    .link ul li {
+        margin: 0 0 15px;
+    }
+}

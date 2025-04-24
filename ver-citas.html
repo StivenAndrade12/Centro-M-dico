@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citas Agendadas - Centro Médico Las Américas</title>
+    <link rel="stylesheet" href="servicios.css">
+    <style>
+        .menu {
+            background-color: #2c3e50;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .logo:hover {
+            color: #3498db;
+        }
+        .navbar ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .navbar a:hover {
+            color: #3498db;
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #3498db;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        .navbar a:hover::after {
+            width: 100%;
+        }
+        #menu, label.menu {
+            display: none;
+        }
+        
+        .cita-item {
+            border: none;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid #3498db;
+        }
+        .cita-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .cita-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .cita-header h3 {
+            color: #2c3e50;
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        .btn-eliminar {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .btn-eliminar:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+        .cita-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .cita-detalle {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            padding: 1rem 0;
+        }
+        .cita-campo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .cita-icono {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+        .cita-campo span {
+            color: #34495e;
+            line-height: 1.5;
+        }
+        .cita-campo strong {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            .cita-info {
+                grid-template-columns: 1fr;
+            }
+            .cita-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            .btn-eliminar {
+                align-self: flex-end;
+            }
+        }
+        .politica-recuadro h1 {
+            color: #2c3e50;
+            margin: 0 0 1.5rem 0;
+            font-size: 1.8rem;
+            text-align: center;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        .politica-recuadro h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #3498db;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu container">
+        <a href="#" class="logo">Centro Medico Las Americas</a>
+        <input type="checkbox" id="menu"/>
+        <label for="menu">
+            <img src="images/menu.png" class="menu" alt="menu">
+        </label>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Inicio</a>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="ver-citas.html">Ver Citas</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <section class="politica-container container">
+        <div class="politica-recuadro">
+            <h1>CITAS AGENDADAS</h1>
+        </div>
+        
+        <div id="lista-citas" class="lista-citas-container">
+            <!-- Las citas se cargarán aquí mediante JavaScript -->
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            const listaCitas = document.getElementById('lista-citas');
+
+            try {
+                const response = await fetch('obtener_citas.php');
+                if (!response.ok) {
+                    throw new Error('Error al obtener las citas');
+                }
+                const citas = await response.json();
+
+                if (citas.length === 0) {
+                    listaCitas.innerHTML = '<div class="politica-recuadro"><p>No hay citas agendadas</p></div>';
+                    return;
+                }
+
+                citas.forEach(cita => {
+                    const citaDiv = document.createElement('div');
+                    citaDiv.className = 'politica-recuadro cita-item';
+
+                let html = `<div class="cita-header">
+                                    <h3>Cita #${cita.id}</h3>
+                                    <button onclick="eliminarCita(${cita.id})" class="btn-eliminar">Eliminar</button>
+                                    <p><strong>Paciente:</strong> ${cita.nombre} ${cita.apellido}</p>
+                                    <p><strong>Documento:</strong> ${cita.documento}</p>
+                                    <p><strong>Teléfono:</strong> ${cita.telefono}</p>
+                                    <p><strong>Email:</strong> ${cita.email}</p>
+                                    <p><strong>Fecha:</strong> ${cita.fecha}</p>
+                                    <p><strong>Hora:</strong> ${cita.hora}</p>
+                                    <p><strong>Especialidad:</strong> ${cita.tipo_consulta}</p>
+                                    <p><strong>Motivo:</strong> ${cita.motivo || 'Consulta general'}</p>
+                                </div>`;
+
+                    citaDiv.innerHTML = html;
+                    listaCitas.appendChild(citaDiv);
+                });
+            } catch (error) {
+                listaCitas.innerHTML = `<div class="politica-recuadro"><p>Error al cargar las citas: ${error.message}</p></div>`;
+            }
+        });
+
+        async function eliminarCita(id) {
+            if (!confirm('¿Estás seguro de eliminar esta cita?')) {
+                return;
+            }
+
+            try {
+                const response = await fetch('eliminar_cita.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams({ id: id })
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    alert(result.success);
+                    location.reload();
+                } else {
+                    alert('Error al eliminar la cita: ' + (result.error || 'Error desconocido'));
+                }
+            } catch (error) {
+                alert('Error al eliminar la cita: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html>

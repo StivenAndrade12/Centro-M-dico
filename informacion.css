@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+img{
+    max-width: 100%;
+}
+
+.container{
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.header {
+    background-color: #FAFAFA;
+    padding: 150px 0 100px 0;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+
+.menu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu .navbar ul li{
+    position: relative;
+    float: left;
+}
+
+.menu .navbar ul li a {
+    font-size: 18px;
+    padding: 20px;
+    color: #323232;
+    display: block;
+}
+
+.menu .navbar ul li a:hover{
+    color: #02B1F4;
+}
+
+.logo{
+    font-size: 25px;
+    font-weight: 800;
+    color:#02B1F4;
+    text-transform: uppercase;
+}
+
+#menu{
+    display: none;
+}
+
+.menu-icono{
+    width: 25px;
+}
+
+.menu label{
+    cursor: pointer;
+    display: none;
+}
+
+.header-content {
+    display: flex;
+}
+
+.header-txt {
+    width: 50%;
+}
+
+.header-txt h1 {
+    line-height: 1;
+    color: #323232;
+    text-transform: uppercase;
+    font-size: 75px;
+    margin-bottom: 10px;
+}
+
+.header-txt p {
+    font-size: 16px;
+    color: #818181;
+    margin-bottom: 45px;
+}
+
+.header-img{
+    width: 50%;
+}
+/* Estilos para cada recuadro de términos y condiciones */
+.politica-recuadro {
+    width: 100%;
+    margin: 20px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+p {
+    text-align: justify;
+    color: black;
+}
+/* Estilos para el ícono del recuadro de términos y condiciones */
+.politica-icono {
+    font-size: 36px;
+    text-align: center;
+    color: #02B1F4;
+    margin-bottom: 45px;
+}
+
+/* Estilos en hover para el recuadro de términos y condiciones */
+.politica-recuadro:hover {
+    transform: scale(1.05);
+}
+
+/* Estilos para el título del recuadro de términos y condiciones */
+.politica-recuadro h3 {
+    font-size: 24px;
+    color: #323232;
+    margin-bottom: 10px;
+}
+
+/* Estilos para el contenido del recuadro de términos y condiciones */
+.politica-recuadro p {
+    font-size: 16px;
+    color: #818181;
+}
+/* Estilos para el recuadro del servicio */
+.horario1 {
+    width: 300px; /* Ancho de cada recuadro */
+    margin: 20px; /* Espaciado entre los recuadros */
+    transition: transform 0.3s ease-in-out; /* Transición suave para el zoom */
+    cursor: pointer;
+}
+
+/* Estilos para el ícono del servicio */
+.horario-icono {
+    font-size: 36px; /* Tamaño de icono */
+    text-align: center;
+}
+.horario:hover {
+    transform: scale(1.2);
+}
+
+.btn-1 {
+    display: inline-block;
+    padding: 11px 25px;
+    background-color: #02B1F4;
+    color: #FFFFFF;
+    border-radius: 15px;
+}
+@media (max-width:991px) {
+
+    .menu {
+        padding: 20px;
+    }
+
+    .menu label {
+        display: initial;
+    }
+
+    .menu .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #FFFFFF;
+        display: none;
+    }
+
+    .menu .navbar ul li {
+        width: 100%;
+    }
+
+    #menu:checked ~ .navbar {
+        display: initial;
+    }
+
+    .header {
+        min-height: 0vh;
+        padding: 80px 30px 50px 30px;
+    }
+
+    .header-content {
+        flex-direction: column;
+    }
+
+    .header-txt {
+        text-align: center;
+        width: 100%;
+        margin-bottom: 25px;
+    }
+
+    .header-img {
+        width: 100%;
+    }
+
+    .header-img img {
+        width: 100%;
+    }
+}
