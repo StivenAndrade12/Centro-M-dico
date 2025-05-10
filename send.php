@@ -70,6 +70,49 @@ foreach ($campos as $campo => $valor) {
     }
 }
 
+$validarHorarioQuery = "SELECT COUNT(*) as count FROM horarios_disponibles WHERE doctor = ? AND fecha = ? AND hora = ?";
+$validarStmt = $conex->prepare($validarHorarioQuery);
+$validarStmt->bind_param("sss", $tipo_consulta, $fecha, $hora);
+$validarStmt->execute();
+$validarResult = $validarStmt->get_result();
+$validarRow = $validarResult->fetch_assoc();
+
+$validarStmt->close();
+
+// Validar horario por defecto si no está en la tabla horarios_disponibles
+if ($validarRow['count'] == 0) {
+    $diaSemana = date('N', strtotime($fecha)); // 1=lunes, 7=domingo
+    $horaTime = strtotime($hora);
+
+    $horariosDiaLaboral = [];
+    for ($h = 6; $h <= 20; $h++) {
+        $horariosDiaLaboral[] = strtotime(sprintf('%02d:00:00', $h));
+    }
+
+    $horariosDomingo = [];
+    for ($h = 10; $h <= 16; $h++) {
+        $horariosDomingo[] = strtotime(sprintf('%02d:00:00', $h));
+    }
+
+    $horarioValido = false;
+    if ($diaSemana >= 1 && $diaSemana <= 6) { // Lunes a sábado
+        if (in_array($horaTime, $horariosDiaLaboral)) {
+            $horarioValido = true;
+        }
+    } elseif ($diaSemana == 7) { // Domingo
+        if (in_array($horaTime, $horariosDomingo)) {
+            $horarioValido = true;
+        }
+    }
+
+    if (!$horarioValido) {
+        http_response_code(400);
+        echo json_encode(['error' => 'El horario seleccionado no está disponible']);
+        exit;
+    }
+}
+
+
 // Insertar en base de datos
 $stmt = $conex->prepare("INSERT INTO citas (nombre, apellido, documento, telefono, email, fecha, hora, tipo_consulta, motivo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 if (!$stmt) {
